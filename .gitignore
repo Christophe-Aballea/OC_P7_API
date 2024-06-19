@@ -1,0 +1,15 @@
+# Dossiers de jupyter notebook et cache Python
+.ipynb_checkpoints/
+__pycache__/
+
+# Dossiers de MLflow
+mlartifacts/
+mlruns/
+
+# Fichiers de modèle et de scaler locaux
+data/scaler.pkl
+data/run_id.txt
+
+# Fichiers volumineux (seront gérés par Git LFS)
+data/df_train_median.csv
+data/df_test_median.csv

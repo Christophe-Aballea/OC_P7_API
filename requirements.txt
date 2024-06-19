@@ -1,0 +1,7 @@
+Flask
+Flask-Testing
+pandas
+joblib
+mlflow
+scikit-learn
+requests
