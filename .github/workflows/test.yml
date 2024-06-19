@@ -11,7 +11,7 @@ jobs:
 
     services:
       mlflow:
-        image: mlflow/mlflow
+        image: ubuntu/mlflow:2.1.1_1.0-22.04
         ports:
           - 5001:5001
         options: --name mlflow-server
