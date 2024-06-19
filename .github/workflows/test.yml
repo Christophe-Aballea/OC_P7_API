@@ -31,6 +31,9 @@ jobs:
         pip install -r requirements.txt
         pip install Flask-Testing
 
+    - name: List Docker images
+      run: docker images
+
     - name: Run tests
       env:
         MLFLOW_TRACKING_URI: http://localhost:5001
