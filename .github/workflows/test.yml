@@ -3,18 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - new-main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    services:
-      mlflow:
-        image: ubuntu/mlflow:2.1.1_1.0-22.04
-        ports:
-          - 5001:5001
-        options: --name mlflow-server
 
     steps:
     - name: Checkout code
@@ -29,15 +22,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install Flask-Testing
 
-    - name: List Docker images
-      run: docker images
-
-    - name: Run tests
-      env:
-        MLFLOW_TRACKING_URI: http://localhost:5001
+    - name: Prepare environment
       run: |
-        mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 5001 &
-        sleep 10  # Attendre que le serveur MLflow démarre
-        python -m unittest discover -s tests
+        python prepare_environment.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add data/scaler.pkl data/model.pkl
+        git commit -m "Update scaler and model [skip ci]"
+        git push
