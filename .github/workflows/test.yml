@@ -25,7 +25,7 @@ jobs:
 
     - name: Prepare environment
       run: |
-        python prepare_environment.py
+        python prepare_scaler_and_model.py
 
     - name: Commit and push changes
       run: |
