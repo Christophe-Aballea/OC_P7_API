@@ -1,3 +1,1 @@
 data/df_train_median.csv filter=lfs diff=lfs merge=lfs -text
-data/df_test_median.csv filter=lfs diff=lfs merge=lfs -text
-data/df_train_median.csv filter=lfs diff=lfs merge=lfs -text
