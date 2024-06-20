@@ -14,9 +14,6 @@ df_train_median_path = os.path.join(base_dir, '..', 'data', 'df_train_median.csv
 # Chargement des données d'entraînement
 df_train = pd.read_csv(df_train_median_path)
 
-# Debug
-print(df_train.columns)
-
 # Séparation X_train, y_train
 X_train = df_train.drop(columns=['TARGET', 'SK_ID_CURR'])
 y_train = df_train['TARGET']
