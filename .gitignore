@@ -1,6 +1,5 @@
-# Fichiers volumineux (gérés par Git LFS)
+# Fichier géré par git lfs
 !data/df_train_median.csv
-!data/df_test_median.csv
 
 # Dossiers de jupyter notebook et cache Python
 .ipynb_checkpoints/
@@ -9,7 +8,3 @@ __pycache__/
 # Dossiers de MLflow
 mlartifacts/
 mlruns/
-
-# Fichiers de modèle et de scaler locaux
-data/scaler.pkl
-data/run_id.txt
