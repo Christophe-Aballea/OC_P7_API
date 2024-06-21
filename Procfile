@@ -1,1 +1,1 @@
-web: python app/predict_api.py
+web: python app/failure_predict.py
