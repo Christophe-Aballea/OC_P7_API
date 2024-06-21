@@ -54,7 +54,7 @@ jobs:
 #        git push heroku HEAD:main -f
 
        run: |
-	 git rm .git/hooks/pre-push
+         git rm .git/hooks/pre-push
 
       uses: akhileshns/heroku-deploy@v3.13.15
       with:
