@@ -43,20 +43,17 @@ jobs:
         else
           echo "scaler.pkl et model.pkl inchangés."
         fi
-#      env:
-#        HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
-#        HEROKU_APP_NAME: ${{ secrets.HEROKU_API_NAME }}
-#      if: github.ref == 'refs/heads/main' && job.status == 'success'
-#      run: |
-#        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
-#        git push heroku HEAD:main -f
 
     - name: Delete hooks
       run: |
-        if [ -n "$(git status --porcelain=.git/hooks/pre-push)" ]
-          git rm .git/hooks/pre-push
+        if [ -f .git/hooks/pre-push ]; then
+          rm .git/hooks/pre-push
+          git add .git/hooks/pre-push
           git commit -m "Delete heroku hooks [CI]"
           git push
+        else
+          echo "No pre-push hook to delete."
+        fi
 
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.13.15
@@ -64,6 +61,14 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_TOKEN}}
         heroku_app_name:  ${{secrets.HEROKU_API_NAME}}
         heroku_email: ${{secrets.HEROKU_EMAIL}}     
+
+#      env:
+#        HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
+#        HEROKU_APP_NAME: ${{ secrets.HEROKU_API_NAME }}
+#      if: github.ref == 'refs/heads/main' && job.status == 'success'
+#      run: |
+#        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+#        git push heroku HEAD:main -f
 
 #      env:
 #        HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
