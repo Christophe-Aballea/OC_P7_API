@@ -44,5 +44,6 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
       run: |
-        git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_API_NAME }}.git
+        # git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_API_NAME }}.git
+        git remote add heroku https://git.heroku.com/failurerepay.git
         git push heroku `git subtree split --prefix app main`:main --force
