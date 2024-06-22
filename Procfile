@@ -1,1 +1,1 @@
-web: gunicorn app/failure_predict:app
+web: gunicorn app.failure_predict:app
