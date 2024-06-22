@@ -1,1 +1,1 @@
-web: python app/failure_predict.py
+web: gunicorn app/failure_predict.py
