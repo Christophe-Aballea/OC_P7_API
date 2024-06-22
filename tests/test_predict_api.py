@@ -16,7 +16,7 @@ class PredictAPITestCase(unittest.TestCase):
         
         # Chargement du scaler et du modèle
         self.scaler = joblib.load(scaler_path)
-        self.model = joblib.load(scaler_model)
+        self.model = joblib.load(scaler_path)
 
     
     def test_predict(self):
