@@ -1,3 +1,4 @@
-# Fichiers à ne pas déployer sur Heroku
+# Fichiers et dossiers à ne pas déployer sur Heroku
 data/df_train_median.csv
 notebooks/
+streamlit/
