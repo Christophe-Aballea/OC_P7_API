@@ -28,6 +28,11 @@ except Exception as e:
     raise RuntimeError(f"Erreur lors du chargement du modèle : {e}")
 
 
+# Fonction test
+@app.route('/', methods=['GET'])
+def welcome():
+    return "L'API de prédiction de défaut de remboursement de crédit est en ligne"
+
 # Fonction de prédiction
 @app.route('/predict', methods=['POST'])
 def predict():
