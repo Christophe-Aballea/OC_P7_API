@@ -9,34 +9,13 @@ app = Flask(__name__)
 
 # Chemin absolu du répertoire courant
 base_dir = os.path.dirname(os.path.abspath(__file__))
-# Chemin absolu de 'run_id.txt'
-run_id_path = os.path.join(base_dir, '..', 'data', 'run_id.txt')
 
-# Vérification de l'existence du fichier run_id.txt
-if not os.path.exists(run_id_path):
-    raise FileNotFoundError("Le fichier 'run_id.txt' est introuvable. Il doit contenir la run_id MLflow du modèle.")
+# Chemin absolu de 'model.pkl'
+model_path = os.path.join(base_dir, '..', 'data', 'model.pkl')
 
-# Récupération du run_id MLflow
-with open(run_id_path, "r") as f:
-    run_id = f.read().strip()
-
-# Vérification que le serveur MLflow est en cours d'exécution
-mlflow_tracking_uri = "http://127.0.0.1:5001"
-try:
-    response = requests.get(mlflow_tracking_uri)
-    if response.status_code != 200:
-        raise ConnectionError(f"Impossible de se connecter au serveur MLflow à {mlflow_tracking_uri}. Lancement du serveur : 'mlflow ui --port 5001'.")
-except requests.exceptions.RequestException as e:
-    raise ConnectionError(f"Erreur de connexion au serveur MLflow : {e}")
-
-mlflow.set_tracking_uri(mlflow_tracking_uri)
-
-# Chargement du modèle
-model_uri = f'runs:/{run_id}/LogisticRegressionModel'
-try:
-    model = mlflow.sklearn.load_model(model_uri)
-except Exception as e:
-    raise RuntimeError(f"Erreur lors du chargement du modèle : {e}")
+# Vérification de l'existence du fichier model.pkl
+if not os.path.exists(model_path):
+    raise FileNotFoundError("Le fichier 'model.pkl' est introuvable. Il doit contenir le modèle entraîné sur le jeu d'entraînement.")
 
 # Chemin absolu de 'scaler.pkl'
 scaler_path = os.path.join(base_dir, '..', 'data', 'scaler.pkl')
@@ -44,6 +23,12 @@ scaler_path = os.path.join(base_dir, '..', 'data', 'scaler.pkl')
 # Vérification de l'existence du fichier scaler.pkl
 if not os.path.exists(scaler_path):
     raise FileNotFoundError("Le fichier 'scaler.pkl' est introuvable. Il doit contenir le scaler entraîné sur le jeu d'entraînement.")
+
+# Chargement du modèle
+try:
+    model = joblib.load(model_path)
+except Exception as e:
+    raise RuntimeError(f"Erreur lors du chargement du modèle : {e}")
 
 # Chargement du scaler
 try:

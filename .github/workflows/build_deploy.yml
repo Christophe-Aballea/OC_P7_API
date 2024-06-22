@@ -48,8 +48,7 @@ jobs:
       run: |
         if [ -f .git/hooks/pre-push ]; then
           rm .git/hooks/pre-push
-          git add .git/hooks/pre-push
-          git commit -m "Delete heroku hooks [CI]"
+          git commit -m "Delete heroku hooks [CI]" --allow-empty
           git push
         else
           echo "No pre-push hook to delete."

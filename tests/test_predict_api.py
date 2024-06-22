@@ -5,7 +5,7 @@ from flask import Flask
 from app.predict_api import app, scaler, model
 import pandas as pd
 import joblib
-import mlflow.sklearn
+# import mlflow.sklearn
 
 class PredictAPITestCase(unittest.TestCase):
     def setUp(self):
@@ -14,15 +14,17 @@ class PredictAPITestCase(unittest.TestCase):
 
         base_dir = os.path.dirname(os.path.abspath(__file__))
         scaler_path = os.path.join(base_dir, '..', 'data', 'scaler.pkl')
-        run_id_path = os.path.join(base_dir, '..', 'data', 'run_id.txt')
+        model_path = os.path.join(base_dir, '..', 'data', 'model.pkl')
+        # run_id_path = os.path.join(base_dir, '..', 'data', 'run_id.txt')
         
         # Chargement du scaler et du modèle
         self.scaler = joblib.load(scaler_path)
-        with open(run_id_path, "r") as f:
-            run_id = f.read().strip()
-        mlflow.set_tracking_uri("http://127.0.0.1:5001")
-        model_uri = f'runs:/{run_id}/LogisticRegressionModel'
-        self.model = mlflow.sklearn.load_model(model_uri)
+        self.model = joblib.load(scaler_model)
+        # with open(run_id_path, "r") as f:
+        #     run_id = f.read().strip()
+        # mlflow.set_tracking_uri("http://127.0.0.1:5001")
+        # model_uri = f'runs:/{run_id}/LogisticRegressionModel'
+        # self.model = mlflow.sklearn.load_model(model_uri)
 
     def test_predict(self):
         # Exemple de données de test valides / source : df_test.drop(columns='SK_ID_CURR').loc[df_test.index == 41868].values.to_list()
