@@ -51,6 +51,6 @@ def predict():
 # Déploiement de l'API
 if __name__ == '__main__':
     try:
-        app.run(host='127.0.0.1', port=5002)
+        app.run()
     except Exception as e:
         raise RuntimeError(f"Erreur lors du démarrage de l'application Flask : {e}")
