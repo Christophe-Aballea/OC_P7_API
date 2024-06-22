@@ -1,0 +1,2 @@
+# Fichiers à ne pas déployer sur Heroku
+data/df_train_medain.csv
