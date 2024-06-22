@@ -8,5 +8,3 @@ __pycache__/
 # Dossiers de MLflow
 mlartifacts/
 mlruns/
-
-tests/P07_NB3_test_API.ipynb
