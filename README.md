@@ -39,7 +39,7 @@ tests/
 .gitattributes : Configuration de Git LFS  
 .slugignore : Fichiers et répertoires à ignorer par Heroku  
 Procfile : Configuration Heroku  
-README.md : Documentation du projet
+README.md : Documentation du projet  
 requirements.txt : Dépendances Python  
 
 ## Prérequis  
