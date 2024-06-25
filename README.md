@@ -4,10 +4,10 @@ Ce projet entraîne et déploie un modèle de scoring de crédit sur la platefor
 Le modèle prédit la probabilité de défaut de remboursement d'un client. Ajustée au seuil de classification, cette prédiction permet d'indiquer si la demande de crédit peut être accordée ou non.  
 
 Un `git push` déclenche :  
-* fit, enregistrement et transform d'un StandardScaler sur les données d'entraînement  
-* Entraînement et enregistrement du modèle sur les données d'entraînement mises à l'échelle  
-* Déploiement sur Heroku  
-* Tests unitaires sur l'API déployée  
+- fit, enregistrement et transform d'un StandardScaler sur les données d'entraînement  
+- Entraînement et enregistrement du modèle sur les données d'entraînement mises à l'échelle  
+- Déploiement sur Heroku  
+- Tests unitaires sur l'API déployée  
 
 ## Structure du Projet  
 .github/workflows/  
