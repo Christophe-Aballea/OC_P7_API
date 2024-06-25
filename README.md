@@ -41,6 +41,7 @@ tests/
 Procfile : Configuration Heroku  
 README.md : Documentation du projet  
 requirements.txt : Dépendances Python  
+runtime.txt : Version de python à utiliser  
 
 ## Prérequis  
 - Python 3.11  
