@@ -32,7 +32,6 @@ streamlit/
 └── app.py # Application Streamlit pour tester l'API  
 
 tests/  
-├── P07_NB3_test_API.ipynb # Notebook de test pour l'API  
 ├── init.py  
 └── test_predict_api.py # Tests unitaires pour l'API  
 
