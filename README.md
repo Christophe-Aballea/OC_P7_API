@@ -7,7 +7,9 @@ Un `git push` déclenche :
 - fit, enregistrement et transform d'un StandardScaler sur les données d'entraînement  
 - Entraînement et enregistrement du modèle sur les données d'entraînement mises à l'échelle  
 - Déploiement sur Heroku  
-- Tests unitaires sur l'API déployée  
+- Tests unitaires sur l'API déployée
+
+  
 
 ## Structure du Projet  
 .github/workflows/  
